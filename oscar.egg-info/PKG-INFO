@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: oscar
+Version: 0.0.1
+Summary: GPU-accelerated simulation and reinforcement learning toolkit for data-driven robot controllers
+Home-page: 
+Author: NVIDIA CORPORATION
+Author-email: ['jdwong@stanford.edu', 'vmakoviychuk@nvidia.com', 'aanandkumar@nvidia.com', 'yukez@nvidia.com']
+License: Copyright (c) 2021, NVIDIA CORPORATION.  All rights reserved.
+Platform: UNKNOWN
+Requires-Python: >=3.6,<3.9
+License-File: LICENSE.txt
+
+UNKNOWN
+
