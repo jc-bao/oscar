@@ -363,7 +363,7 @@ env:
         loss_threshold: 10000000000.0
         train_with_actor_loss: false
         train_with_forward_loss: true
-        pretrained_model: /home/pcy/rl/oscar/examples/../trained_models/pretrain/Pretrace_oscar__seed_1.pth
+        pretrained_model: /home/pcy/RL/oscar/examples/../trained_models/pretrain/Pretrace_oscar__seed_1.pth
         learn_residual: true
         max_residual_magnitude: 0.1
         use_tanh_residual_output: true
@@ -393,24 +393,24 @@ args: !!python/object:argparse.Namespace
   device: GPU
   ppo_device: GPU
   no_force_sim_gpu: false
-  logdir: /home/pcy/rl/oscar/examples/../log/train
+  logdir: /home/pcy/RL/oscar/examples/../log/train
   experiment_name: train
   cfg_train: Base
-  cfg_env: /home/pcy/rl/oscar/examples/../oscar/cfg/train/base.yaml
+  cfg_env: /home/pcy/RL/oscar/examples/../oscar/cfg/train/base.yaml
   cfg_env_add:
-  - /home/pcy/rl/oscar/examples/../oscar/cfg/train/sim/physx.yaml
-  - /home/pcy/rl/oscar/examples/../oscar/cfg/train/agent/franka.yaml
-  - /home/pcy/rl/oscar/examples/../oscar/cfg/train/task/push.yaml
-  - /home/pcy/rl/oscar/examples/../oscar/cfg/train/controller/oscar.yaml
-  - /home/pcy/rl/oscar/examples/../oscar/cfg/train/controller/oscar_settings/delan_residual.yaml
+  - /home/pcy/RL/oscar/examples/../oscar/cfg/train/sim/physx.yaml
+  - /home/pcy/RL/oscar/examples/../oscar/cfg/train/agent/franka.yaml
+  - /home/pcy/RL/oscar/examples/../oscar/cfg/train/task/push.yaml
+  - /home/pcy/RL/oscar/examples/../oscar/cfg/train/controller/oscar.yaml
+  - /home/pcy/RL/oscar/examples/../oscar/cfg/train/controller/oscar_settings/delan_residual.yaml
   seed: -1
   max_iterations: 0
   num_envs: 0
   episode_length: 0
   randomize: false
   deterministic: false
-  pretrained_delan: /home/pcy/rl/oscar/examples/../trained_models/pretrain/Pretrace_oscar__seed_1.pth
-  save_video: false
+  pretrained_delan: /home/pcy/RL/oscar/examples/../trained_models/pretrain/Pretrace_oscar__seed_1.pth
+  save_video: true
   video_name: null
   num_test_episodes: 10
   physics_engine: !!python/object/new:isaacgym._bindings.linux-x86_64.gym_38.SimType

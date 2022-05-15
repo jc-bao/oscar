@@ -10,7 +10,7 @@
 ####################################################################
 ###################### MACROS TO SET HERE ##########################
 
-CONDA_PATH=~/miniconda3/envs/rlgpu/lib/  # Should be absolute path to your conda oscar env lib directory
+CONDA_PATH=~/miniconda3/envs/rlgpu/lib/:~/anaconda3/envs/rlgpu/lib/  # Should be absolute path to your conda oscar env lib directory
 TASK=push                              # Options are: {trace, pour, push}
 CONTROLLER=oscar                        # Options are: {oscar, osc, osc_no_vices, ik, joint_tor, joint_vel, joint_pos}
 PRETRAINED_OSCAR=default                # If using OSCAR, should set this to absolute fpath to pretrained OSCAR .pth file. Setting this to "default" results in default pretrained model being loaded
@@ -102,4 +102,5 @@ ${CONTROLLER_CONFIGS} \
 --headless \
 --max_iterations ${EPOCHS} \
 --logdir ${OSCAR_PATH}/log/train \
---experiment_name ${HEADER_STR}train
+--experiment_name ${HEADER_STR}train \
+--save_video

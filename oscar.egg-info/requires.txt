@@ -11,4 +11,4 @@ ninja
 isaacgym
 trimesh
 matplotlib
-rl_games@ file://localhost/home/pcy/rl/oscar/oscar/rl_games
+rl_games@ file://localhost/home/pcy/RL/oscar/oscar/rl_games
