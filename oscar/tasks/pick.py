@@ -544,22 +544,14 @@ def _compute_task_rewards(
 	in_range = d_hand < states["puck_size"].squeeze(-1) * 5.0
 	contact_reward = good_contact & ~bad_contact & in_range
 
-	# Penalty for pressing too hard
-	puck_contact = contacts["puck"]
-	press_penalty = torch.abs(puck_contact[:, 2]) > 10.0
-
 	# Compute distance from puck to target position
 	d_target = torch.norm(states["target_pos"] - states["puck_pos"], dim=-1)
-	target_reward = 1 - torch.tanh(10.0 * d_target)
+	target_reward = 1 - torch.tanh(5.0*d_target)
 
 	# We provide the path success reward + maximum between (target reward + reach reward + contact reward, goal reward)
-	rewards = \
-		reward_settings["r_press_scale"] * press_penalty + \
-		torch.max(
-			0.5 * target_reward * reward_settings["r_goal_scale"] +
-			reward_settings["r_reach_scale"] * reach_reward +
-			contact_reward * reward_settings["r_contact_scale"],
-		)
+	rewards = target_reward * reward_settings["r_goal_scale"] + \
+			reward_settings["r_reach_scale"] * reach_reward + \
+				contact_reward * reward_settings["r_contact_scale"]
 
 	return rewards
 

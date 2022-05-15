@@ -1568,7 +1568,7 @@ class A2CControllerAgent(A2CAgent):
 			videos = np.array(videos)
 			video = np.concatenate(videos, axis=0)
 			video = np.moveaxis(video, -1, 1)
-			wandb.log({"video": wandb.Video(video)})
+			wandb.log({"video": wandb.Video(video, fps=30)})
 
 		return batch_dict
 

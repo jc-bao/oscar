@@ -7,7 +7,7 @@ env:
   task:
     metric_rewards: False
     name: Pick
-    numEnvs: 2048
+    numEnvs: 1536
     envSpacing: 1.5
     episodeLength: 300
     enableDebugVis: False
@@ -26,10 +26,10 @@ env:
     actionScale: 1.0
 
     # Reward info
-    r_reach_scale: 0.1
+    r_reach_scale: 0.4
     r_contact_scale: 0.05
     r_press_scale: 0.1
-    r_goal_scale: 10.0
+    r_goal_scale: 1.0
 
     clip_observations: 5.0
     clip_actions: 1.0
