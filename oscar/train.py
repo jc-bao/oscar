@@ -128,7 +128,6 @@ env_configurations.register('rlgpu', {
 
 
 if __name__ == '__main__':
-  wandb.init(name='push', project='oscar', group='push', sync_tensorboard=True)
   set_np_formatting()
 
   args = get_args(use_rlg_config=True)
@@ -139,6 +138,9 @@ if __name__ == '__main__':
     "deterministic_mode", False))
 
   vargs = vars(args)
+
+  if args.wandb:
+    wandb.init(name='push', project='oscar', group='push', sync_tensorboard=True, config=vargs)
 
   algo_observer = RLGPUAlgoObserver()
 

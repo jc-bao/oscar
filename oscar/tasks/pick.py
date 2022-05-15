@@ -5,6 +5,7 @@
 # for OSCAR. To view a copy of this license, see the LICENSE file.
 # ---------------------------------------------------------------
 
+import isaacgym
 import numpy as np
 import os
 import torch
@@ -18,7 +19,7 @@ from isaacgym import gymapi
 from oscar.utils.torch_utils import axisangle2quat, quat2axisangle, rotate_vec_by_quat, to_torch, tensor_clamp, quat_mul
 
 
-class Push(AgentTask):
+class Pick(AgentTask):
   """
   Robot Manipulation task that involves pushing a small puck up an inclined table along a specific path
   """
@@ -813,3 +814,13 @@ def _compute_task_resets(
   )
 
   return reset_buf
+
+if __name__ == '__main__':
+  import yaml
+  with open('/home/pcy/rl/oscar/oscar/cfg/train/task/pick.yaml') as f:
+    cfg = yaml.safe_load(f)['env']
+  with open('/home/pcy/rl/oscar/oscar/cfg/train/sim/physx.yaml') as f:
+    cfg['sim'] = yaml.safe_load(f)['env']['sim']
+  cfg['sim']['save_video'] = False
+  cfg['sim']['physics_engine'] == gymapi.SIM_PHYSX
+  env = Pick(cfg)

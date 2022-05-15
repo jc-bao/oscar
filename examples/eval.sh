@@ -10,7 +10,7 @@
 ####################################################################
 ###################### MACROS TO SET HERE ##########################
 
-CONDA_PATH=~/anaconda3/envs/oscar/lib/  # Should be absolute path to your conda oscar env lib directory
+CONDA_PATH=~/miniconda3/envs/rlgpu/lib/:~/anaconda3/envs/rlgpu/lib/  # Should be absolute path to your conda oscar env lib directory
 TASK=push                               # Options are: {trace, pour, push}
 CONTROLLER=oscar                        # Options are: {oscar, osc, osc_no_vices, ik, joint_tor, joint_vel, joint_pos}
 N_ENVS=4                                # Number of test environments to use

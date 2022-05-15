@@ -103,4 +103,5 @@ ${CONTROLLER_CONFIGS} \
 --max_iterations ${EPOCHS} \
 --logdir ${OSCAR_PATH}/log/train \
 --experiment_name ${HEADER_STR}train \
+--wandb
 --save_video

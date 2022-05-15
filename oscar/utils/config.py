@@ -343,6 +343,8 @@ def get_args(benchmark=False, use_rlg_config=False):
             "help": "Absolute fpath to pretrained delan model if using OSCAR"},
         {"name": "--save_video", "action": "store_true", "default": False,
             "help": "Save videos during rollouts"},
+        {"name": "--wandb", "action": "store_true", "default": False,
+            "help": "Use wandb for logging"},
         {"name": "--video_name", "type": str, "default": None,
             "help": "Custom video name when saving videos"},
         {"name": "--num_test_episodes", "type": int, "default": 10,

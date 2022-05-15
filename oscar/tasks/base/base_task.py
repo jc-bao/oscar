@@ -140,12 +140,12 @@ class BaseTask:
       sim_params = self.gym.get_sim_params(self.sim)
       if sim_params.up_axis == gymapi.UP_AXIS_Z:
         # # For close-up of small num envs
-        # cam_pos = gymapi.Vec3(0.7, 1.3, 1.5)
-        # cam_target = gymapi.Vec3(0.6, 0, 1.0)
+        cam_pos = gymapi.Vec3(0.7, 1.3, 1.5)
+        cam_target = gymapi.Vec3(0.6, 0, 1.0)
 
         # For far-away shot of many envs
-        cam_pos = gymapi.Vec3(20.0, 30.0, 3.0)
-        cam_target = gymapi.Vec3(15.0, 10.0, -7.0)
+        # cam_pos = gymapi.Vec3(20.0, 30.0, 3.0)
+        # cam_target = gymapi.Vec3(15.0, 10.0, -7.0)
 
       else:
         cam_pos = gymapi.Vec3(20.0, 7.0, 25.0)
