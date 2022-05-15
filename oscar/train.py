@@ -14,9 +14,9 @@
 
 import os
 
-from utils.config import set_np_formatting, set_seed, get_args, parse_sim_params, load_cfg
-from utils.parse_task import parse_task
-from utils.rl_games_custom import *
+from oscar.utils.config import set_np_formatting, set_seed, get_args, parse_sim_params, load_cfg
+from oscar.utils.parse_task import parse_task
+from oscar.utils.rl_games_custom import *
 
 from rl_games.common import env_configurations, experiment, vecenv
 from rl_games.common.algo_observer import AlgoObserver

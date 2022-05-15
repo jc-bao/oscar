@@ -8,3 +8,4 @@
 from .pour import Pour
 from .push import Push
 from .trace import Trace
+from .pick import Pick
