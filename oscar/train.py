@@ -26,6 +26,7 @@ from rl_games.algos_torch import torch_ext
 import numpy as np
 import copy
 import torch
+import wandb
 
 
 def create_rlgpu_env(**kwargs):
@@ -127,6 +128,7 @@ env_configurations.register('rlgpu', {
 
 
 if __name__ == '__main__':
+  wandb.init(name='push', project='oscar', group='push', sync_tensorboard=True)
   set_np_formatting()
 
   args = get_args(use_rlg_config=True)
