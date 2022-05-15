@@ -1052,7 +1052,7 @@ class A2CControllerAgent(A2CAgent):
         ContinuousA2CBase.__init__(self, base_name, config)
 
         # Set the L2 fetch granularity
-        _libcudart = ctypes.CDLL('libcudart.so')
+        _libcudart = ctypes.CDLL('/home/pcy/miniconda3/envs/rlgpu/lib/python3.8/site-packages/torch/lib/libcudart-a7b20f20.so.11.0')
         # Set device limit on the current device
         # cudaLimitMaxL2FetchGranularity = 0x05
         pValue = ctypes.cast((ctypes.c_int * 1)(), ctypes.POINTER(ctypes.c_int))

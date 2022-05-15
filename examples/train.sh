@@ -10,8 +10,8 @@
 ####################################################################
 ###################### MACROS TO SET HERE ##########################
 
-CONDA_PATH=~/anaconda3/envs/oscar/lib/  # Should be absolute path to your conda oscar env lib directory
-TASK=trace                              # Options are: {trace, pour, push}
+CONDA_PATH=~/miniconda3/envs/rlgpu/lib/  # Should be absolute path to your conda oscar env lib directory
+TASK=push                              # Options are: {trace, pour, push}
 CONTROLLER=oscar                        # Options are: {oscar, osc, osc_no_vices, ik, joint_tor, joint_vel, joint_pos}
 PRETRAINED_OSCAR=default                # If using OSCAR, should set this to absolute fpath to pretrained OSCAR .pth file. Setting this to "default" results in default pretrained model being loaded
 EPOCHS=default                          # Manually set value (int), or "default" results in default value being applied
@@ -24,7 +24,7 @@ export LD_LIBRARY_PATH=${CONDA_PATH}
 export CUDA_VISIBLE_DEVICES=0
 
 # Setup python interpreter
-source activate oscar
+source activate rlgpu
 
 # Get current working directory
 temp=$( realpath "$0"  )

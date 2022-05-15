@@ -1,0 +1,419 @@
+seed: 1
+deterministic: true
+policy:
+  seed: __AUTO__
+  deterministic: __AUTO__
+  params:
+    algo:
+      name: a2c_continuous_controller
+    model:
+      name: continuous_a2c_logstd_controller
+    network:
+      name: actor_critic_controller
+      controller: __AUTO__
+      separate: true
+      space:
+        continuous:
+          use_tanh: true
+          mu_activation: None
+          sigma_activation: None
+          mu_init:
+            name: orthogonal
+            gain: 0.01
+          sigma_init:
+            name: const_initializer
+            val: 0
+          fixed_sigma: true
+      mlp:
+        units:
+        - 256
+        - 128
+        - 64
+        activation: elu
+        initializer:
+          name: orthogonal
+          gain: 1.41
+        regularizer:
+          name: None
+    load_checkpoint: false
+    load_path: path
+    load_optimizer_state: false
+    config:
+      freeze: false
+      deterministic_when_frozen: true
+      max_epochs: 8000
+      reward_shaper:
+        scale_value: 1.0
+      normalize_advantage: true
+      gamma: 0.99
+      tau: 0.95
+      learning_rate: 3e-4
+      name: __AUTO__
+      score_to_win: 10000
+      grad_norm: 1.0
+      entropy_coef: 0.0
+      truncate_grads: true
+      env_name: __AUTO__
+      env_config: __AUTO__
+      ppo: true
+      e_clip: 0.2
+      num_actors: __AUTO__
+      steps_num: 32
+      minibatch_size: 16384
+      mini_epochs: 4
+      critic_coef: 2.0
+      clip_value: false
+      lr_schedule: adaptive
+      lr_threshold: 0.016
+      normalize_input: true
+      normalize_value: true
+      seq_length: 8
+      bounds_loss_coef: 0.0001
+      mixed_precision: false
+      save_frequency: 50
+      logdir: __AUTO__
+      player:
+        games_num: 10
+env:
+  sim:
+    dt: 0.02
+    substeps: 2
+    headless: true
+    physics_engine: 0
+    graphics_device: 0
+    compute_device: 0
+    device: 0
+    control_freq_inv: 1
+    render_every_n_steps: 1
+    up_axis_str: z
+    enable_viewer_sync: true
+    img_dim: 480
+    subscenes: 0
+    slices: null
+    physx:
+      num_threads: 4
+      solver_type: 1
+      num_position_iterations: 12
+      num_velocity_iterations: 1
+      contact_offset: 0.005
+      rest_offset: 0.0
+      bounce_threshold_velocity: 0.2
+      max_depenetration_velocity: 10.0
+      default_buffer_size_multiplier: 5.0
+      always_use_articulations: false
+    flex:
+      num_outer_iterations: 4
+      num_inner_iterations: 15
+      warm_start: 0.8
+      relaxation: 0.75
+  agent:
+    type: franka
+    min_body_inertia:
+    - 0.001
+    - 0.01
+    use_eef_weight: true
+    eef_type: box
+    eef_size:
+    - 0.055
+    - 0.055
+    - 0.04
+    randomize_eef_weight: true
+    eef_mass:
+    - 0.1
+    - 2.0
+    disable_gravity: false
+    use_gravity_compensation: false
+    observations:
+    - eef_pos
+    - eef_quat
+    n_frames_stack: 3
+    dof_arm_mode: __AUTO__
+    dof_default:
+    - 0
+    - 0.0
+    - 0
+    - -2.618
+    - 0
+    - 2.9416
+    - 0.7854
+    dof_lower_limits:
+    - -2.8973
+    - -1.7628
+    - -2.8973
+    - -3.0718
+    - -2.8973
+    - -0.0175
+    - -2.8973
+    dof_upper_limits:
+    - 2.8973
+    - 1.7628
+    - 2.8973
+    - -0.0698
+    - 2.8973
+    - 3.7525
+    - 2.8973
+    dof_max_velocities:
+    - 2.618
+    - 2.618
+    - 2.618
+    - 2.618
+    - 3.1416
+    - 3.1416
+    - 3.1416
+    dof_max_efforts:
+    - 87.0
+    - 87.0
+    - 87.0
+    - 87.0
+    - 12.0
+    - 12.0
+    - 12.0
+    dof_stiffness: __AUTO__
+    dof_stiffness_pos:
+    - 400.0
+    - 400.0
+    - 400.0
+    - 400.0
+    - 400.0
+    - 400.0
+    - 400.0
+    dof_stiffness_effort:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    dof_damping_min:
+    - 0.001
+    - 0.001
+    - 0.001
+    - 0.001
+    - 0.001
+    - 0.001
+    - 0.001
+    dof_damping_max:
+    - 0.1
+    - 0.1
+    - 0.1
+    - 0.1
+    - 0.1
+    - 0.1
+    - 0.1
+    dof_friction_min:
+    - 0.001
+    - 0.001
+    - 0.001
+    - 0.001
+    - 0.001
+    - 0.001
+    - 0.001
+    dof_friction_max:
+    - 0.01
+    - 0.01
+    - 0.01
+    - 0.01
+    - 0.01
+    - 0.01
+    - 0.01
+    dof_armature_min:
+    - 0.0002
+    - 0.0002
+    - 0.0002
+    - 0.0002
+    - 0.0002
+    - 0.0002
+    - 0.0002
+    dof_armature_max:
+    - 0.005
+    - 0.005
+    - 0.005
+    - 0.005
+    - 0.005
+    - 0.005
+    - 0.005
+    dof_arm: 7
+    eef_action_dim: 0
+    denormalize_control: __AUTO__
+    history_length: 25
+  task:
+    metric_rewards: false
+    name: Push
+    numEnvs: 2048
+    envSpacing: 1.5
+    episodeLength: 300
+    enableDebugVis: false
+    observation_noise: 0.0
+    agent_pos_noise: 0.0
+    agent_rot_noise: 0.0
+    randomize: false
+    startPositionNoise: 0.01
+    startRotationNoise: 0.785
+    aggregateMode: 3
+    actionScale: 1.0
+    r_reach_scale: 0.1
+    r_contact_scale: 0.05
+    r_press_scale: 0.1
+    r_path_scale: 5.0
+    r_goal_scale: 10.0
+    clip_observations: 5.0
+    clip_actions: 1.0
+    observations:
+    - puck_tilt
+    - puck_pos
+    - puck_to_target
+    - proportion_completed
+    n_frames_stack: 3
+    path_bounds:
+    - 0.27
+    - 0.55
+    path_width: 0.09
+    path_incline: 0.0
+    path_friction:
+    - 0.2
+    - 2.0
+    path_shape: bend1
+    path_kwargs:
+      bend_size: 2
+    puck_size:
+    - 0.065
+    - 0.075
+    puck_density:
+    - 1000
+    - 10000
+    puck_friction:
+    - 0.2
+    - 2.0
+  policy_controller:
+    type: robot_arm
+    agent_config: __AUTO__
+    n_envs: __AUTO__
+    device: __AUTO__
+    control_freq: null
+    control_steps_per_policy_step: __AUTO__
+    normalize_actions: true
+    controller_config:
+      type: oscar
+      input_min: -1.0
+      input_max: 1.0
+      output_min:
+      - -0.1
+      - -0.1
+      - -0.1
+      - -0.5
+      - -0.5
+      - -0.5
+      output_max:
+      - 0.1
+      - 0.1
+      - 0.1
+      - 0.5
+      - 0.5
+      - 0.5
+      kp: null
+      kp_null: 10.0
+      damping_ratio: null
+      decouple_pos_ori: false
+      control_noise: 0.0
+      actor_loss_scale: 1.0
+      delan:
+        n_width: 128
+        n_depth: 3
+        embed_q: true
+        use_extrinsics: true
+        use_ground_truth_mm: false
+        extrinsics_with_residual: true
+        bootstrap_extrinsics: true
+        steps_per_extrinsics_update: 1
+        extrinsics_net_kwargs:
+          mlp_hidden_dims:
+          - 512
+          - 256
+          - 128
+          use_cnn: false
+          cnn_input_channels:
+          - 32
+          - 32
+          - 32
+          cnn_output_channels:
+          - 32
+          - 32
+          - 32
+          cnn_kernels:
+          - 4
+          - 5
+          - 5
+          cnn_strides:
+          - 2
+          - 1
+          - 1
+        extrinsics_latent_dim: 8
+        use_compensation_torques: true
+        diagonal_epsilon: 0.001
+        activation: ReLu
+        diag_activation: Exp
+        b_init: 0.0001
+        w_init: xavier_normal
+        g_hidden: 1.41
+        g_output: 0.1
+        lr: 0.0001
+        weight_decay: 1.0e-05
+        max_grad_norm: 2.0
+        loss_threshold: 10000000000.0
+        train_with_actor_loss: false
+        train_with_forward_loss: true
+        pretrained_model: /home/pcy/rl/oscar/examples/../trained_models/pretrain/Pretrace_oscar__seed_1.pth
+        learn_residual: true
+        max_residual_magnitude: 0.1
+        use_tanh_residual_output: true
+        use_exponential_residual: true
+        n_width_residual: 64
+        n_depth_residual: 3
+        b_init_residual: 0.0
+        b_diag_init_residual: 0.0
+        freeze_base: true
+        freeze_extrinsics: false
+        freeze_residual: false
+args: !!python/object:argparse.Namespace
+  compute_device_id: 0
+  graphics_device_id: 0
+  flex: false
+  physx: false
+  physx_gpu: false
+  num_threads: 0
+  subscenes: 0
+  slices: 0
+  test: false
+  play: false
+  resume: false
+  checkpoint: Base
+  headless: true
+  task: Humanoid
+  device: GPU
+  ppo_device: GPU
+  no_force_sim_gpu: false
+  logdir: /home/pcy/rl/oscar/examples/../log/train
+  experiment_name: train
+  cfg_train: Base
+  cfg_env: /home/pcy/rl/oscar/examples/../oscar/cfg/train/base.yaml
+  cfg_env_add:
+  - /home/pcy/rl/oscar/examples/../oscar/cfg/train/sim/physx.yaml
+  - /home/pcy/rl/oscar/examples/../oscar/cfg/train/agent/franka.yaml
+  - /home/pcy/rl/oscar/examples/../oscar/cfg/train/task/push.yaml
+  - /home/pcy/rl/oscar/examples/../oscar/cfg/train/controller/oscar.yaml
+  - /home/pcy/rl/oscar/examples/../oscar/cfg/train/controller/oscar_settings/delan_residual.yaml
+  seed: -1
+  max_iterations: 0
+  num_envs: 0
+  episode_length: 0
+  randomize: false
+  deterministic: false
+  pretrained_delan: /home/pcy/rl/oscar/examples/../trained_models/pretrain/Pretrace_oscar__seed_1.pth
+  save_video: false
+  video_name: null
+  num_test_episodes: 10
+  physics_engine: !!python/object/new:isaacgym._bindings.linux-x86_64.gym_38.SimType
+    state: 0
+  use_gpu: false
+  train: true

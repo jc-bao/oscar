@@ -10,7 +10,7 @@
 ####################################################################
 ###################### MACROS TO SET HERE ##########################
 
-CONDA_PATH=~/anaconda3/envs/oscar/lib/  # Should be absolute path to your conda oscar env lib directory
+CONDA_PATH=~/miniconda3/envs/oscar/lib/  # Should be absolute path to your conda oscar env lib directory
 EPOCHS=0            # 0 results in default, else manually sets value
 
 ####################################################################

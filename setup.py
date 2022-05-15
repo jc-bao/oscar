@@ -13,7 +13,7 @@ setup(
     url='',
     license='Copyright (c) 2021, NVIDIA CORPORATION.  All rights reserved.',
     packages=[package for package in find_packages() if package.startswith("oscar")],
-    python_requires='>=3.6,<3.8',
+    python_requires='>=3.6,<3.9',
     install_requires=[
         "torch>=1.4.0",
         "torchvision>=0.5.0",
