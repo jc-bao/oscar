@@ -140,7 +140,8 @@ if __name__ == '__main__':
   vargs = vars(args)
 
   if args.wandb:
-    wandb.init(name='push', project='oscar', group='push', sync_tensorboard=True, config=vargs)
+    wandb.init(name='push', project='oscar', group='push',
+               sync_tensorboard=True, config=vargs)
 
   algo_observer = RLGPUAlgoObserver()
 

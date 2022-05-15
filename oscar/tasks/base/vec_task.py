@@ -77,6 +77,9 @@ class VecTaskPython(VecTask):
 
   def get_state(self):
     return torch.clamp(self.task.states_buf, -self.clip_obs, self.clip_obs).to(self.rl_device)
+  
+  def render(self, **kwrags):
+    return self.task.render(**kwrags)
 
   def step(self, actions):
     actions_tensor = torch.clamp(

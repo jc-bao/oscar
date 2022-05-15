@@ -42,6 +42,9 @@ env:
     puck_density: [1000, 10000]
     puck_friction: [0.2, 2.0]
 
+    num_cameras: 1
+    rgb_render: Trues
+
   agent:
     type: "franka"
     min_body_inertia: [0.001, 0.01]

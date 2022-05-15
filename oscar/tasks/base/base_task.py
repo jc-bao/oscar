@@ -256,8 +256,8 @@ class BaseTask:
   def get_states(self):
     return self.states_buf
 
-  def render(self, sync_frame_time=False):
-    if self.viewer:
+  def render(self, sync_frame_time=False, mode='human'):
+    if self.viewer and mode == 'human':
       # check for window closed
       if self.gym.query_viewer_has_closed(self.viewer):
         sys.exit()
@@ -279,6 +279,17 @@ class BaseTask:
         self.gym.draw_viewer(self.viewer, self.sim, True)
       else:
         self.gym.poll_viewer_events(self.viewer)
+    elif mode == 'rgb_array':
+        if self.device != "cpu":
+          self.gym.fetch_results(self.sim, True)
+        self.gym.step_graphics(self.sim)
+        self.gym.render_all_camera_sensors(self.sim)
+        images = []
+        for idx, handle in enumerate(self.cameras):
+          image = self.gym.get_camera_image(
+            self.sim, self.envs[idx], handle, gymapi.IMAGE_COLOR)
+          images.append(image.reshape((image.shape[0], -1, 4)))
+        return images
 
   # Apply randomizations only on resets, due to current PhysX limitations
   def apply_randomizations(self, dr_params):
