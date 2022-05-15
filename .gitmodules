@@ -1,26 +1,4 @@
-# Python-created cache files
-**/__pycache__
-
-# Saved actor/critic networks from training
-*.pth
-
-# Plots, recorders, replay buffers
-*plot_*.jpg
-*recorder.npy
-*replay*.npz
-
-# Runs created by Isaac Gym
-runs/
-
-# VS Code
-**/.vscode
-# JetBrains folder
-.idea/
-results/
-model/
-wandb/
-outputs/
-
-.DS_Store
-
-**/log
+[submodule "oscar/rl_games"]
+	path = oscar/rl_games
+	url = https://github.com/cremebrule/rl_games.git
+	branch = oscar
